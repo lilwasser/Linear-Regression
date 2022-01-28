@@ -14,7 +14,7 @@ I examined the target of domestic gross and feature inputs including Domestic Op
 My client is a Movie Producer who wants to ensure that their plan for a new movie is a smashing success and their budget, marketing costs, and overhead is spent wisely. For instance, if a movie flops at the opening, the Producer might want to siphon off any extra expenditures and re-evaluate their marketing plan. 
 
 
-I explored the Box Office Mojo website and scraped data from the top 1000+ films in terms of domestic gross. 
+I explored the Box Office Mojo website and scraped data from the top 1000+ films in terms of domestic gross. I evaluated the data via train-val-test on Linear Regression, Ridge Regression, and Lasso Regularization models (with scaled features and 5 K-fold cross validation) in order to optimize for R2 and MAE. 
 
 
 ## DATA:
@@ -35,13 +35,13 @@ _*Data Cleaning*_
 _*Analysis*_
 
 ** Feature Selection & Engineering: I chose to just look at the top performing Genre by looking at the Coefficient of Determiniation as well as the percentage of films a Genre was seen in. In this case, Comedy movies were the best indicator of a profitable movie genre. I also used this same reasoning to narrow down the list of Distributors to just Walt Disney Studios. 
+
 ** Model Selection and Evaluation: did proper validation and testing.
 
+** A simple linear regression model with multiple multiplicative interaction terms was selected in addition to Lasso Regularization. Features included in the final model are domestic opening weekend gross, Disney as distribution company, comedy genre, release month, PG rating, running time, budget, number of markets (countries movie is shown in). 
 
-** A simple linear regression model with multiple multiplicative interaction terms was selected in addition to Lasso Regulation. Features included in the final model are domestic opening weekend gross, Disney as distribution company, comedy genre, release month, PG rating, running time, budget, number of markets (countries movie is shown in).
 
-
-** The model was optimized for R2 and mean absolute error. The final model's test data outputted an R2 of 0.71 for Linear Regression in Train/Test/Val, and then the Cross-Validation test was 0.704.
+** The model was optimized for R2 and mean absolute error. The final model's test data outputted an R2 of 0.71 in Train/Test/Val, and then the Cross-Validation test R2 was 0.704. Lasso Regularization was giving much better results, so I am choosing to pursue future analysis using Lasso Regularization.
 
 
 ## TOOLS:
