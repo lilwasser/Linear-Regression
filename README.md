@@ -7,10 +7,6 @@
 **I scraped data from Box Office Mojo and built Linear Regression models that predict domestic gross for top domestic movies.**
 
 I examined the target of domestic gross and feature inputs including Domestic Opening Gross, Running Time, Release Month, Release Year, Distributor, Genre, MPAA Rating, Budget, World Gross, and Foreign Gross.
-----------------
-To reduce statistical noise and maximize the chances that resources would get used, I focused on MTA traffic after work hours, between 4pm - 8pm, assuming that people would seek these types of services outside of their typical work day. I analyzed traffic over the course of Spring 2021 (March - June) to inform my client when to anticipate fluxes in traffic for Spring 2022. With these metrics, my client can best anticipate relative clinic traffic due to proximity to heavily used subway stations and allow them to readily stock up on supplies.
-
-I developed graphs using matplotlib to visualize which stations had the most traffic in terms of daily average and overall traffic to best assess which nearby clinics should receive additional resources and funding. 
 
 
 ## DESIGN:
@@ -30,24 +26,6 @@ I explored the Box Office Mojo website and scraped data from the top 1000+ films
 
 _*Data Cleaning*_
 
-Algorithms:
-- build a linear regression in python, using techniques such as:
-—> feature engineering
-—> add polynomial and interaction features
-—> regularization
-- rigorous model selection and evaluation (proper validation and testing) required
-
-and movie profiles using BeautifulSoup
-acquisition: web scraping put links
-	•	storage: flat files
-	•	sources: (as listed below or any other publicly available information)
-	•	movie: boxofficemojo.com, imdb.com
-	•	sports: sports-reference.com
-   - primary data must be scraped
-- have a continuous, numerical target variables to predict (GROSS), 1000+ data points and 10+ features
-- feature engineering & selection challenges
-- 
-
 ** I started off by scraping data from Box Office Mojo using Beautiful Soup and Python's Pandas package
 ** Next, I standardized the data by clearing white space, dropping unecessary columns, and cleaning up any extraneous data.
 ** In doing Exploratory Data Analysis, I narrowed down the key features to do my regression analysis of based on coefficient size.
@@ -55,12 +33,15 @@ acquisition: web scraping put links
 
 
 _*Analysis*_
-** Feature Selection
 
-** I aggregated entry and exit data to create analysis on total station traffic using a merge function in Pandas.
-** I noticed that station traffic increased from March - June for each station overall, as well as for the top 3 stations.
-** Traffic was typically greatest on Mondays.
-In a linear regression, the R-squared term is a measure of “goodness of fit”, and in this case the resulting model had an R-squared of 0.502, which means that just over 50% of the variation among the observed data can be explained by the results OLS regression model. The underlying distribution of the data is unlikely to be linear in nature, which limits our ability to improve R-squared substantially, however in order to improve the model, my next step would be to create interaction terms for runtime versus genre (I suspect in general there is a overall optimal runtime for movies, but that perhaps audiences will expect fantasy movies to be longer than action movies of similar budgets) and to scrape more years of worldwide movie releases so that we are expanding our label-space at the same time as we add more features.
+** Feature Selection & Engineering: I chose to just look at the top performing Genre by looking at the Coefficient of Determiniation as well as the percentage of films a Genre was seen in. In this case, Comedy movies were the best indicator of a profitable movie genre. I also used this same reasoning to narrow down the list of Distributors to just Walt Disney Studios. 
+** Model Selection and Evaluation: did proper validation and testing.
+
+
+** A simple linear regression model with multiple multiplicative interaction terms was selected in addition to Lasso Regulation. Features included in the final model are domestic opening weekend gross, Disney as distribution company, comedy genre, release month, PG rating, running time, budget, number of markets (countries movie is shown in).
+
+
+** The model was optimized for R2 and mean absolute error. The final model's test data outputted an R2 of 0.71 for Linear Regression in Train/Test/Val, and then the Cross-Validation test was 0.704.
 
 
 ## TOOLS:
