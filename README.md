@@ -40,8 +40,11 @@ _*Analysis*_
 
 ** A simple linear regression model with multiple multiplicative interaction terms was selected in addition to Lasso Regularization. Features included in the final model are domestic opening weekend gross, Disney as distribution company, comedy genre, release month, PG rating, running time, budget, number of markets (countries movie is shown in). 
 
+** I noticed the coefficient for Release Year was -9.50439480e+05, which is interesting because this means that the movie market is probably oversaturated with films, so movies might not be making as much relative profit as movies that were released in years prior. Other features that didn't perform well (negative coefficients) include Budget, Famliy movies, and R-rated movies. These features don't necessarily bring in as much Domestic Profit.
 
-** The model was optimized for R2 and mean absolute error. The final model's test data outputted an R2 of 0.71 in Train/Test/Val, and then the Cross-Validation test R2 was 0.704. Lasso Regularization was giving much better results, so I am choosing to pursue future analysis using Lasso Regularization.
+** The model was optimized for R2 and mean absolute error. The final model's test data outputted an R2 of 0.71 in Train/Test/Val, and then the Cross-Validation test R2 was 0.704. RMSE: 52103184.16306101. Lasso Regularization was giving much better results, so I am choosing to pursue future analysis using Lasso Regularization.
+
+
 
 
 ## TOOLS:
