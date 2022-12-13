@@ -1,7 +1,5 @@
 # Linear-Regression
 
-# Metis Project 2: Linear Regression
-
 ## ABSTRACT:
 
 **I scraped data from Box Office Mojo and built Linear Regression models that predict domestic gross for top domestic movies.**
